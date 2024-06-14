@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.pojo.Cart;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @FeignClient(name = "Provider")
+@LoadBalancerClient
 public interface CartFeignClient {
     @PostMapping("/cart/getCartAll")//显示该购物车内容
     List<Cart> getCartAll(@RequestParam(value = "userId") String userId, @RequestParam(value = "businessId") int businessId);

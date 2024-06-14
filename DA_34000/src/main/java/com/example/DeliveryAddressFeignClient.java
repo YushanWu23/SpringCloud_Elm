@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.pojo.DeliveryAddress;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @FeignClient(name = "Provider")
+@LoadBalancerClient
 public interface DeliveryAddressFeignClient {
     @GetMapping("/deliveryAddress/getDeliveryAddressByUserId")//根据用户编号查询所属送货地址
     List<DeliveryAddress> getDeliveryAddressByUserId(@RequestParam(value = "userId") String userId);

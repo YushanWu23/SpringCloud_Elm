@@ -17,6 +17,7 @@
         <module>Cart_33000</module>
         <module>DA_34000</module>
         <module>Orders_35000</module>
+        <module>provider_11000</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
