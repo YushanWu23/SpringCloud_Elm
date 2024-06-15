@@ -2,7 +2,7 @@ server:
   port: 33000
 spring:
   application:
-    name: "Consumer"
+    name: "cart"
 eureka:
   instance:
     prefer-ip-address: true
