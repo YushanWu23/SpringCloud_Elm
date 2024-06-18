@@ -22,7 +22,8 @@ public class OrdersController {
         return iOrdersService.getOrdersByOrdersId(orderId);
     }
     @GetMapping("/getOrdersByUserId")
-    List<Orders> getOrdersByUserId(@RequestParam(value = "userId") String userId){//根据用户编号查询此用户的所有订单信息
+    List<Orders> getOrdersByUserId(@RequestParam(value = "userId") String userId) throws InterruptedException{//根据用户编号查询此用户的所有订单信息
+        Thread.sleep(3000);
         return iOrdersService.getOrdersByUserId(userId);
     }
     @GetMapping("/updateOrderState")

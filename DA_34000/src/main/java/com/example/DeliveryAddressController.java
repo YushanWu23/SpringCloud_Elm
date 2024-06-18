@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.pojo.CommonResult;
 import com.example.pojo.DeliveryAddress;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;

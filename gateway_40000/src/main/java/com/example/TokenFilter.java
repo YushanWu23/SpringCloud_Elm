@@ -15,7 +15,7 @@ public class TokenFilter implements GlobalFilter {
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
         String requestPath = exchange.getRequest().getPath().toString();
 
-        if (requestPath.contains("/user/login")) {
+        if (requestPath.contains("/user/login")||requestPath.contains("/user/register")) {
             return chain.filter(exchange);
         }
         if (token == null || !validateToken(token)) {

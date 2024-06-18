@@ -6,10 +6,6 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: business
-          uri: lb://business
-          predicates:
-            - Path= /business/**
         - id: cart
           uri: lb://cart
           predicates:
@@ -26,10 +22,20 @@ spring:
           uri: lb://orders
           predicates:
             - Path= /orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: circuitBreakerA
+                fallbackUri: forward:/fallback/orders
         - id: user
           uri: lb://user
           predicates:
             - Path= /user/**
+        - id: business
+          uri: lb://business
+          predicates:
+            - Path= /business/**
+
       globalcors:
         cors-configurations:
           '[/**]':
