@@ -22,7 +22,11 @@ public class DeliveryAddressController {
         return deliveryAddressFeignClient.getDeliveryAddressByDaId(daId);
     }
     @PostMapping("/saveDeliveryAddress")
-    int saveDeliveryAddress(@RequestParam(value = "contactName") String contactName,@RequestParam(value = "contactSex") int contactSex,@RequestParam(value = "contactTel") String contactTel,@RequestParam(value = "address") String address,@RequestParam(value = "userId") String userId){
+    int saveDeliveryAddress(@RequestParam(value = "contactName") String contactName,
+                            @RequestParam(value = "contactSex") int contactSex,
+                            @RequestParam(value = "contactTel") String contactTel,
+                            @RequestParam(value = "address") String address,
+                            @RequestParam(value = "userId") String userId){
         return deliveryAddressFeignClient.saveDeliveryAddress(contactName,contactSex,contactTel,address,userId);
     }
     @PostMapping("/updateDeliveryAddress")

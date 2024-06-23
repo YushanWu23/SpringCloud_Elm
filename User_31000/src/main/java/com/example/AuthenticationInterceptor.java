@@ -14,7 +14,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Resource
     JwtTokenUtil jwtTokenUtil;
     @Override//用于在请求到达Controller之前进行预处理。
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) throws Exception {
         if (request.getMethod().equals("OPTIONS")) {
             response.setStatus(HttpServletResponse.SC_OK);
             return true;
@@ -35,13 +37,17 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
 
     @Override//用于在请求处理之后进行后处理操作
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request,
+                           HttpServletResponse response,
+                           Object handler, ModelAndView modelAndView) throws Exception {
         //调用父类的postHandle方法，执行默认的后处理操作
         HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
     }
 
     @Override//在请求完成之后进行清理操作
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request,
+                                HttpServletResponse response,
+                                Object handler, Exception ex) throws Exception {
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

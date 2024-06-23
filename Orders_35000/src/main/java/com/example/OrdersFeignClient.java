@@ -12,7 +12,10 @@ import java.util.List;
 @LoadBalancerClient
 public interface OrdersFeignClient {
     @PostMapping("/orders/createOrders")
-    int createOrders(@RequestParam(value = "userId") String userId, @RequestParam(value = "businessId") int businessId, @RequestParam(value = "daId") int daId, @RequestParam(value = "orderTotal") Double orderTotal );
+    int createOrders(@RequestParam(value = "userId") String userId,
+                     @RequestParam(value = "businessId") int businessId,
+                     @RequestParam(value = "daId") int daId,
+                     @RequestParam(value = "orderTotal") Double orderTotal );
     @GetMapping("/orders/getOrdersByOrdersId")
     Orders getOrdersByOrdersId(@RequestParam(value = "orderId") int orderId);
     @GetMapping("/orders/getOrdersByUserId")

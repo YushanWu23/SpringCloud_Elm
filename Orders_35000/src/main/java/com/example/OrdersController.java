@@ -21,14 +21,17 @@ public class OrdersController {
         return "接口调用成功";
     }
     @GetMapping("/getOrdersByUserId")
-    List<Orders> getOrdersByUserId(@RequestParam(value = "userId") String userId) throws InterruptedException{//根据用户编号查询此用户的所有订单信息
+    List<Orders> getOrdersByUserId(@RequestParam(value = "userId") String userId) throws InterruptedException{
         if(protectSignal){
             Thread.sleep(50000L);
         }
         return ordersFeignClient.getOrdersByUserId(userId);
     }
     @PostMapping("/createOrders")
-    int createOrders(@RequestParam(value = "userId") String userId,@RequestParam(value = "businessId") int businessId,@RequestParam(value = "daId") int daId,@RequestParam(value = "orderTotal") Double orderTotal ){
+    int createOrders(@RequestParam(value = "userId") String userId,
+                     @RequestParam(value = "businessId") int businessId,
+                     @RequestParam(value = "daId") int daId,
+                     @RequestParam(value = "orderTotal") Double orderTotal ){
         return ordersFeignClient.createOrders(userId,businessId,daId,orderTotal);
     }
     @GetMapping("/getOrdersByOrdersId")
